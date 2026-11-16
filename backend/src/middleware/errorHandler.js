@@ -12,11 +12,17 @@ function errorHandler(err, req, res, next) {
     stack: process.env.NODE_ENV === 'development' ? err.stack : undefined,
   });
 
+  let message = err.message || 'Internal Server Error';
+
+  if (err.message && (err.message.includes('fetch failed') || (err.name === 'TypeError' && err.message === 'fetch failed'))) {
+    message = 'Database connection error: Could not reach Supabase. Please verify SUPABASE_URL and SUPABASE_KEY in backend/.env.';
+  }
+
   const statusCode = err.statusCode || (res.statusCode && res.statusCode !== 200 ? res.statusCode : 500);
 
   res.status(statusCode).json({
     success: false,
-    message: err.message || 'Internal Server Error',
+    message,
     data: null,
     ...(process.env.NODE_ENV === 'development' && { stack: err.stack }),
   });
