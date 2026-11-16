@@ -92,8 +92,29 @@
 
 ---
 
-## 4. Step 3: Frontend Deployment on Vercel
+## 4. Step 3: Frontend & Full-Stack Deployment on Vercel
 
+SmartMess can be deployed on Vercel using either of two architectures:
+
+### Option A: Unified Multi-Service Project (Recommended)
+Deploy both the Express `backend` and Vite `frontend` together as a single unified Vercel project using root [`vercel.json`](file:///c:/Users/Aadit/Downloads/se_project/vercel.json):
+
+1. **Import Repository to Vercel:**
+   * Navigate to [https://vercel.com](https://vercel.com) $\rightarrow$ **Add New...** $\rightarrow$ **Project**.
+   * Import the SmartMess repository. Vercel will automatically detect `vercel.json` with multi-service configuration (`services.backend` and `services.frontend`).
+2. **Environment Variables on Vercel:**
+   Under **Project Settings** $\rightarrow$ **Environment Variables**, configure the backend variables:
+   * `SUPABASE_URL` = `https://your-project-id.supabase.co`
+   * `SUPABASE_KEY` = `your-supabase-key`
+   * `JWT_SECRET` = `your-secure-jwt-secret-key`
+   * `JWT_EXPIRES_IN` = `24h`
+   *(Note: `VITE_API_URL` is NOT required because the frontend automatically routes API requests to same-origin `/api/...` through the Vercel rewrite rules!)*
+3. **Deployment Routing:**
+   * Requests to `/api/(.*)` route directly to the `backend` Express service.
+   * Requests to `/(.*)` route to the `frontend` Vite React SPA.
+   * Single unified domain, zero CORS cross-origin configuration required!
+
+### Option B: Standalone Frontend on Vercel (Split-Host with Render)
 1. **Import Repository to Vercel:**
    * Navigate to [https://vercel.com](https://vercel.com) and log in.
    * Click **Add New...** $\rightarrow$ **Project**.
@@ -110,7 +131,7 @@
    VITE_API_URL=https://smartmess-api.onrender.com/api
    ```
 4. **Single Page Application (SPA) Routing Configuration:**
-   To guarantee that client-side React Router paths (e.g., `/dashboard`, `/admin/menus`) don't return 404 errors on page reload, verify that [`frontend/vercel.json`](file:///c:/Users/Aadit/Downloads/se_project/frontend/vercel.json) exists with rewrite rules.
+   Client-side React Router paths (e.g., `/dashboard`, `/admin/menus`) are preserved via [`frontend/vercel.json`](file:///c:/Users/Aadit/Downloads/se_project/frontend/vercel.json).
 
 ---
 

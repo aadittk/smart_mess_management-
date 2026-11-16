@@ -30,8 +30,14 @@ const allowedOrigins = [
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Allow requests with no origin (like mobile apps, curl, or Postman)
-      if (!origin || allowedOrigins.includes(origin) || process.env.NODE_ENV !== 'production') {
+      // Allow requests with no origin (like mobile apps, curl, or Postman),
+      // configured origins, and all Vercel deployment preview domains
+      if (
+        !origin ||
+        allowedOrigins.includes(origin) ||
+        origin.endsWith('.vercel.app') ||
+        process.env.NODE_ENV !== 'production'
+      ) {
         return callback(null, true);
       }
       return callback(new Error('CORS policy: Not allowed by Access-Control-Allow-Origin'));
@@ -52,8 +58,8 @@ if (process.env.NODE_ENV !== 'test') {
 // Global rate limiting
 app.use(generalRateLimiter);
 
-// Health check endpoint
-app.get('/api/health', (req, res) => {
+// Health check endpoint (handles both /api/health and /health)
+app.get(['/api/health', '/health'], (req, res) => {
   res.status(200).json({
     success: true,
     message: 'SmartMess API is fully operational',
@@ -63,10 +69,13 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// API Routes
+// API Routes: mounted under both /api/... and /... for seamless Vercel rewrites
 app.use('/api/auth', authRoutes);
+app.use('/auth', authRoutes);
 app.use('/api/student', studentRoutes);
+app.use('/student', studentRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/admin', adminRoutes);
 
 // Catch-all 404 route
 app.use('*', (req, res) => {
