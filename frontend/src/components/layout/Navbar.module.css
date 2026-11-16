@@ -1,0 +1,222 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.logoIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoAccent {
+  color: var(--primary-color);
+}
+
+.adminBadge {
+  background-color: #fef3c7;
+  color: #b45309;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.desktopNav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.navLink {
+  padding: 0.45rem 0.85rem;
+  font-size: 0.925rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.navLink:hover {
+  color: var(--primary-color);
+  background-color: var(--primary-light);
+}
+
+.active {
+  color: var(--primary-color);
+  background-color: var(--primary-light);
+  font-weight: 600;
+}
+
+.registerBtn {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background-color var(--transition-fast);
+}
+
+.registerBtn:hover {
+  background-color: var(--primary-hover);
+  color: #ffffff;
+}
+
+.adminLink {
+  font-size: 0.85rem;
+  color: var(--text-subtle);
+  padding: 0.45rem 0.75rem;
+}
+
+.adminLink:hover {
+  color: var(--text-main);
+}
+
+.userSection {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.profileChip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  background-color: var(--bg-card-subtle);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  transition: background-color var(--transition-fast);
+}
+
+.profileChip:hover {
+  background-color: #e2e8f0;
+}
+
+.avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userName {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+}
+
+.logoutBtn:hover {
+  background-color: var(--danger-light);
+  color: var(--danger-color);
+}
+
+.mobileToggle {
+  display: none;
+  color: var(--text-main);
+}
+
+.mobileDrawer {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .desktopNav,
+  .userSection {
+    display: none;
+  }
+
+  .mobileToggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobileDrawer {
+    display: block;
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 1.25rem;
+    box-shadow: var(--shadow-md);
+  }
+
+  .mobileNavLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .mobileNavLink {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-main);
+    border-radius: var(--radius-sm);
+  }
+
+  .mobileNavLink:hover {
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+  }
+
+  .mobileLogoutBtn {
+    margin-top: 0.5rem;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    color: var(--danger-color);
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    width: 100%;
+  }
+
+  .mobileLogoutBtn:hover {
+    background-color: var(--danger-light);
+  }
+}

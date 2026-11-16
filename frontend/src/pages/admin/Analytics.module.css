@@ -1,0 +1,259 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 1.5rem 4rem;
+  max-width: 1300px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.forecastCard {
+  border-color: #93c5fd;
+  background: linear-gradient(135deg, #ffffff, #eff6ff);
+}
+
+.forecastGrid {
+  display: grid;
+  grid-template-columns: 1.25fr 2fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.forecastMain {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.forecastIcon {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-md);
+  background-color: var(--primary-color);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.forecastTargetDate {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  letter-spacing: 0.05em;
+}
+
+.forecastTotal {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.1;
+  margin: 0.2rem 0;
+}
+
+.forecastTotal span {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.forecastBasis {
+  font-size: 0.8rem;
+  color: var(--text-subtle);
+}
+
+.mealBreakdownGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+.mealForecastBox {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 1rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.mfLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.mfNum {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin: 0.2rem 0;
+}
+
+.mfSub {
+  font-size: 0.75rem;
+  color: var(--text-subtle);
+}
+
+.chartsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.svgWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.barSvg,
+.lineSvg {
+  width: 100%;
+  height: auto;
+  max-height: 250px;
+}
+
+.svgBar {
+  transition: all var(--transition-fast);
+}
+
+.svgBar:hover {
+  opacity: 0.85;
+}
+
+.dishesGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.dishRankList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.dishRankItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--bg-card-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+}
+
+.rankBadgeTop {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #ecfdf5;
+  color: #059669;
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.rankBadgeBottom {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #fef2f2;
+  color: #dc2626;
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dishMeta {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.dishTitleText {
+  font-size: 0.925rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.dishReviewCount {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.scorePillTop {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background-color: #fffbeb;
+  color: #b45309;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-full);
+}
+
+.scorePillBottom {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background-color: #fef2f2;
+  color: #b91c1c;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-full);
+}
+
+.emptyText {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  padding: 2rem 0;
+  text-align: center;
+  font-style: italic;
+}
+
+@media (max-width: 900px) {
+  .forecastGrid,
+  .chartsGrid,
+  .dishesGrid {
+    grid-template-columns: 1fr;
+  }
+  .mealBreakdownGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
